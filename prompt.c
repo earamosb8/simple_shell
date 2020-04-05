@@ -5,10 +5,11 @@
 #include <sys/wait.h>
 /**
  * main - fork & wait example
- *
+ * @arc: size of aruments
+ * @env: arguments
  * Return: Always 0.
  */
-int main(int arc ,char *env[])
+int main(int arc, char *env[])
 {
 	char *line = NULL;
 	char *token = NULL, *argv[32];
@@ -16,7 +17,7 @@ int main(int arc ,char *env[])
 	ssize_t read;
 	pid_t child_pid;
 	int status, i;
-	
+
 	arc = arc;
 	while (1)
 	{
@@ -28,12 +29,12 @@ int main(int arc ,char *env[])
 			return (EXIT_FAILURE);
 		}
 		token = strtok(line, " \t\n\r");
-			for (i = 0; i < 32 && token != NULL; i++)
-			{
-				argv[i] = token;
-				token = strtok(NULL, " \t\n\r");
-			}
-			argv[i + 1] = NULL;
+		for (i = 0; i < 32 && token != NULL; i++)
+		{
+			argv[i] = token;
+			token = strtok(NULL, " \t\n\r");
+		}
+		argv[i + 1] = NULL;
 		if ((child_pid = fork()) == 0)
 		{
 
@@ -41,9 +42,9 @@ int main(int arc ,char *env[])
 			{
 				perror("Error:");
 			}
-		} else
+		}
+		else
 		{
-
 			wait(&status);
 		}
 	}
@@ -51,6 +52,3 @@ int main(int arc ,char *env[])
 	free(line);
 	exit(EXIT_SUCCESS);
 }
-
-
-
