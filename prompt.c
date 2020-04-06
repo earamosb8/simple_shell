@@ -1,8 +1,4 @@
-#include <stdio.h>
-#include <unistd.h>
-#include <stdlib.h>
-#include <string.h>
-#include <sys/wait.h>
+#include "shell.h"
 /**
  * main - fork & wait example
  * @arc: size of aruments
@@ -13,6 +9,7 @@ int main(int arc, char *env[])
 {
 	char *line = NULL;
 	char *token = NULL, *argv[32];
+	char *exit_com = "exit";
 	size_t len = 0;
 	ssize_t read;
 	pid_t child_pid;
@@ -26,12 +23,16 @@ int main(int arc, char *env[])
 		if (read < 0)
 		{
 			perror("Unable to allocate buffer");
-			return (EXIT_FAILURE);
+			exit(EXIT_FAILURE);
 		}
 		token = strtok(line, " \t\n\r");
 		for (i = 0; i < 32 && token != NULL; i++)
 		{
 			argv[i] = token;
+			if (_strcmp(argv[0],exit_com) == 0)
+			{
+				exit(EXIT_SUCCESS);
+			}
 			token = strtok(NULL, " \t\n\r");
 		}
 		argv[i + 1] = NULL;
