@@ -35,13 +35,13 @@ int main(int arc, char *env[])
 			token = strtok(NULL, " \t\n\r");
 		}
 		argv[i + 1] = NULL;
-		if ((child_pid = fork()) == 0)
+		child_pid = fork();
+		if (child_pid  == 0)
 		{
 
 			if (execve(argv[0], argv, env) == -1)
-			{
 				perror("Error:");
-			}
+
 		}
 		else
 		{
