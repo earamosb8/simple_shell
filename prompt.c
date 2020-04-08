@@ -32,8 +32,11 @@ int main(int ac, char *env[])
 				exit(EXIT_SUCCESS);
 			}
 			token = strtok(NULL, " \t\n\r");
+			i++;
 		}
+
 		argv[i + 1] = NULL;
+		i = 0;
 		if ((child_pid = fork()) == 0)
 		{
 			if (execve(argv[0], argv, env) == -1)
