@@ -12,8 +12,8 @@ int main(int ac, char *env[])
 	ssize_t read;
 	pid_t child_pid;
 	int status, i = 0;
+	(void) ac;
 
-	ac = ac;
 	while (1)
 	{
 		printf("#cisfun$ ");
@@ -38,7 +38,8 @@ int main(int ac, char *env[])
 		{
 			if (execve(argv[0], argv, env) == -1)
 			{
-				perror("Error:");
+				perror("Error: not valid command");
+				exit(EXIT_FAILURE);
 			}
 		}
 		else
