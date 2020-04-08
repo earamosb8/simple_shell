@@ -35,7 +35,7 @@ int main(int ac, char *env[])
 			i++;
 		}
 
-		argv[i + 1] = NULL;
+		argv[i] = NULL;
 		i = 0;
 		if ((child_pid = fork()) == 0)
 		{
