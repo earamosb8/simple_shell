@@ -4,23 +4,23 @@
  *
  * Return: Always 0.
  */
-int main(int ac, char *env[])
+int main(int argc,char *argv[], char *env[])
 {
 	char *line = NULL;
-	char *token = NULL, *argv[32];
+	char *token = NULL;
 	size_t len = 0;
 	ssize_t read;
 	pid_t child_pid;
 	int status, i = 0;
+    (void)argc;
 
-	ac = ac;
-	while (1)
+	print_sign();
+	while ((read = getline(&line, &len, stdin)))
 	{
-		printf("#cisfun$ ");
-		read = getline(&line, &len, stdin);
 		if (read < 0)
 		{
 			perror("Unable to allocate buffer");
+			free(line);
 			return (EXIT_FAILURE);
 		}
 		token = strtok(line, " \t\n\r");
@@ -34,21 +34,25 @@ int main(int ac, char *env[])
 			token = strtok(NULL, " \t\n\r");
 		}
 		argv[i + 1] = NULL;
-		if ((child_pid = fork()) == 0)
+		child_pid = fork();
+		if ((child_pid) == 0)
 		{
-			if (execve(argv[0], argv, env) == -1)
-			{
-				perror("Error:");
-			}
+			
+				if (execve(argv[0], argv, env) == -1)
+				{
+				perror("Error: not valid command");
+				exit(EXIT_FAILURE);
+				}
+			
 		}
 		else
 		{
 			wait(&status);
 		}
+		free(line);
 		len = 0;
 		line = NULL;
+		print_sign();
 	}
-	free(argv);
-	free(line);
-	exit(EXIT_SUCCESS);
+	return (EXIT_SUCCESS);
 }
