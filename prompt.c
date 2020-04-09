@@ -1,28 +1,32 @@
 #include "shell.h"
 /**
  * main - fork & wait example
- *
+ * @argc: void arg
+ * @argv: arguments passed by stdinput
+ * @env: eviroment
  * Return: Always 0.
  */
-int main(int ac, char *env[])
+int main(int argc, char *env[])
 {
-	char *line = NULL;
-	char *token = NULL, *argv[32];
+	char *line = NULL, *token, *argv[32];
 	size_t len = 0;
 	ssize_t read;
 	pid_t child_pid;
 	int status, i = 0;
-	(void) ac;
+	(void) argc;
 
-	while (1)
+	print_sign();
+
+	while ((read = getline(&line, &len, stdin)))
 	{
-		printf("#cisfun$ ");
-		read = getline(&line, &len, stdin);
 		if (read < 0)
 		{
 			perror("Unable to allocate buffer");
 			return (EXIT_FAILURE);
 		}
+
+//		token = tokenize(line);
+
 		token = strtok(line, " \t\n\r");
 		while (token != NULL)
 		{
@@ -34,10 +38,14 @@ int main(int ac, char *env[])
 			token = strtok(NULL, " \t\n\r");
 			i++;
 		}
-
 		argv[i] = NULL;
 		i = 0;
-		if ((child_pid = fork()) == 0)
+	/*	if (_strcmp(argv[0], "exit") == 0)
+		{
+			exit(EXIT_SUCCESS);
+		} */
+		child_pid = fork();
+		if ((child_pid) == 0)
 		{
 			if (execve(argv[0], argv, env) == -1)
 			{
@@ -51,8 +59,7 @@ int main(int ac, char *env[])
 		}
 		len = 0;
 		line = NULL;
+		print_sign();
 	}
-	free(argv);
-	free(line);
 	exit(EXIT_SUCCESS);
 }
