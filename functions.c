@@ -7,9 +7,9 @@ void print_sign(void)
 {
 	char *prompt = "#cisfun$ ";
 	int len = _strlen(prompt);
-	printf("%i",len);
+
 	if (isatty(STDIN_FILENO))
-		write(STDOUT_FILENO, prompt, 9);
+		write(STDOUT_FILENO, prompt, len);
 }
 /**
  * tokenize - convert string on intems of an array
@@ -27,7 +27,7 @@ char **tokenize(char *line)
 		return (NULL);
 
 	command = malloc((sizeof(char *) * (len + 1)));
-	if ((command = NULL))
+	if (command == NULL)
 		return (NULL);
 
 	token = strtok(line, " \t\n\r");

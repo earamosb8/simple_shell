@@ -56,7 +56,7 @@ char *_strncpy(char *dest, char *src, int n)
 }
 /**
  * command_lot - the number of commands
- * @string: string with the commands
+ * @str: string with the commands
  * Return: number of commands
 */
 
@@ -87,10 +87,10 @@ unsigned int command_lot(char *str)
 void free_all(char **com)
 {
 	int i = 0;
-	
+
 	if (com == NULL)
 		return;
-	while(com)
+	while (com)
 	{
 		free(com[i]);
 	}

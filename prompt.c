@@ -2,7 +2,6 @@
 /**
  * main - fork & wait example
  * @argc: void arg
- * @argv: arguments passed by stdinput
  * @env: eviroment
  * Return: Always 0.
  */
@@ -37,7 +36,7 @@ int main(int argc, char *env[])
 			token = strtok(NULL, " \t\n\r");
 			i++;
 		}
-		argv[i] = NULL; 
+		argv[i] = NULL;
 		i = 0;/** hasta aca iria la funcion de tokenizar */
 		child_pid = fork();
 		if ((child_pid) == 0)
@@ -49,12 +48,10 @@ int main(int argc, char *env[])
 			}
 		}
 		else
-		{
 			wait(&status);
-		}
 		len = 0;
 		line = NULL;
-
+		print_sign();
 	}
 	exit(EXIT_SUCCESS);
 }
