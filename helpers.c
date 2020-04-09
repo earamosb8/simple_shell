@@ -91,11 +91,11 @@ void free_all(char **com)
 	
 	if (com == NULL)
 		return;
-	
-	for (i = 0; com[i]; i++)
+	while(com)
 	{
 		free(com[i]);
 	}
+	i++;
 	if (com[i] == NULL)
 		free(com[i]);
 	free(com);
