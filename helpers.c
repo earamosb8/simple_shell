@@ -26,13 +26,12 @@ int _strcmp(char *s1, char *s2)
 int _strlen(char *s)
 {
 	int i;
-	int len;
 
-	for (i = 0 ; s[len] != '\0' ; ++i)
+	for (i = 0 ; s[i] != '\0' ; i++)
 	{
-		len = i;
+		;
 	}
-	return (len);
+	return (i);
 }
 /**
  * _strncpy - copy str and null byte from src to dest

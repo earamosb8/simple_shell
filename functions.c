@@ -6,10 +6,10 @@
 void print_sign(void)
 {
 	char *prompt = "#cisfun$ ";
-	int  len = _strlen(prompt);
-
+	int len = _strlen(prompt);
+	printf("%i",len);
 	if (isatty(STDIN_FILENO))
-		write(STDOUT_FILENO, prompt, len);
+		write(STDOUT_FILENO, prompt, 9);
 }
 /**
  * tokenize - convert string on intems of an array
@@ -21,7 +21,7 @@ char **tokenize(char *line)
 	char *token;
 	char **command;
 	unsigned int i = 0, len;
-	
+
 	len = command_lot(line);
 	if (len == 0)
 		return (NULL);
@@ -35,7 +35,7 @@ char **tokenize(char *line)
 	{
 		command[i] = malloc(_strlen(token) + 1);
 		if (command[i] == NULL)
-		{	
+		{
 			free_all(command);
 			return (NULL);
 		}
