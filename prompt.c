@@ -5,15 +5,16 @@
  * @env: eviroment
  * Return: Always 0.
  */
-int main(int argc, char *env[])
+int main(int argc, char *argv[], char *env[])
 {
 	char *line = NULL, **token;
 	size_t len = 0;
 	ssize_t read;
 	pid_t child_pid;
 	int status;
-	(void) argc;
+	int counter = 0;
 
+	(void) argc;
 	print_sign();
 	while ((read = getline(&line, &len, stdin)))
 	{
@@ -23,7 +24,8 @@ int main(int argc, char *env[])
 			return (EXIT_FAILURE);
 		}
 		token = tokenize(line);
-		if ((_strcmp(token[0], "exit") == 0)
+		counter ++;
+		if ((_strcmp(token[0], "exit") == 0))
 		{
 			exit(EXIT_SUCCESS);
 		}
@@ -32,7 +34,7 @@ int main(int argc, char *env[])
 		{
 			if (execve(token[0], token, env) == -1)
 			{
-				perror("Error: not valid command");
+				print_error(argv, counter, token[0]);
 				exit(EXIT_FAILURE);
 			}
 		}

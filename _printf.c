@@ -1,4 +1,4 @@
-#include "holberton.h"
+#include "shell.h"
 /**
  * get_op_func - get function print of format select.
  * @s: format
@@ -15,6 +15,7 @@ int (*get_op_func(const char *s))(va_list)
 		{"i", _printi},
 		{"d", _printd},
 		{"%", _printp},
+		{"ui", f_int_unsigned},
 		{NULL, NULL}
 	};
 	for (i = 0; tipo[i].type != NULL; i++)

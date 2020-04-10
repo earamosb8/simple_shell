@@ -21,6 +21,7 @@ int _printp(__attribute__((unused))va_list c);
 int _prints(va_list s);
 int _printd(va_list d);
 int _printi(va_list i);
+int f_int_unsigned(va_list ui);
 /**
  * struct format - Struct to define type of data and its function.
  * @type: formats
@@ -40,5 +41,5 @@ char **tokenize(char *line);
 unsigned int command_lot(char *str);
 char *_strncpy(char *dest, char *src, int n);
 void free_all(char **com);
-
+void print_error(char **argv, unsigned int count, char *token);
 #endif
