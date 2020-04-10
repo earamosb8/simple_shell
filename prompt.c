@@ -24,9 +24,9 @@ int main(int argc, char *env[])
 		}
 		token = tokenize(line);
 		if ((_strcmp(token[0], "exit") == 0)
-			{
-				exit(EXIT_SUCCESS);
-			}
+		{
+			exit(EXIT_SUCCESS);
+		}
 		child_pid = fork();
 		if ((child_pid) == 0)
 		{
