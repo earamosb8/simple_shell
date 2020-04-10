@@ -90,23 +90,3 @@ unsigned int command_lot(char *str)
 	}
 	return (command);
 }
-/**
- * free_all - free all double pointers
- * @com: the pointer to free
- * Return: void
- */
-void free_all(char **com)
-{
-	int i = 0;
-
-	if (com == NULL)
-		return;
-	while (com)
-	{
-		free(com[i]);
-	}
-	i++;
-	if (com[i] == NULL)
-		free(com[i]);
-	free(com);
-}

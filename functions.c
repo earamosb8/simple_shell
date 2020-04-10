@@ -20,8 +20,10 @@ char **tokenize(char *line)
 {
 	char *token;
 	char **command;
-	unsigned int i = 0, len;
+	unsigned int len;
+	int i = 0;
 
+	line[_strlen(line) - 1] = '\0';
 	len = command_lot(line);
 	if (len == 0)
 		return (NULL);

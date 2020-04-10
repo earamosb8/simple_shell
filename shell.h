@@ -42,4 +42,6 @@ unsigned int command_lot(char *str);
 char *_strncpy(char *dest, char *src, int n);
 void free_all(char **com);
 void print_error(char **argv, unsigned int count, char *token);
+void send_free(char *buffer, char **commands);
+
 #endif
