@@ -25,7 +25,6 @@ int main(int argc, char *argv[], char *env[])
 			return (EXIT_FAILURE);
 		}
 		counter ++;
-
 		if (*line != '\n')
 		{
 			token = tokenize(line);
@@ -60,7 +59,6 @@ int main(int argc, char *argv[], char *env[])
 				send_free(line, token);
 			}
 		}
-		
 		len = 0, line = NULL;
 		print_sign();
 	}
