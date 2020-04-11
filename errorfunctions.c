@@ -7,7 +7,7 @@
  */
 void print_error(char **argv, unsigned int counter, char *token)
 {
-	_printf("%s: %i: %s: not found \n", argv[0], counter, token);
+	_printf("%s: %i: %s: not found\n", argv[0], counter, token);
 }
 /**
  * free_all - free all double pointers
@@ -18,17 +18,15 @@ void free_all(char **token)
 {
 	unsigned int i = 0;
 
-	if (token == NULL)
-		return;
-	while (token[i])
+	if (token != NULL)
 	{
-		free(token[i]);
-		i++;
+		while (token[i])
+		{
+			free(token[i]);
+			i++;
+		}
+		free(token);
 	}
-
-	if (token[i] == NULL)
-		free(token[i]);
-	free(token);
 }
 /**
  * send_free - Function to send free when the child is not created

@@ -12,7 +12,7 @@ int main(int argc, char *argv[], char *env[])
 	ssize_t read;
 	pid_t child_pid;
 	int status;
-	int counter = 0;
+	int counter = 0, i = 0;
 
 	(void) argc;
 	print_sign();
@@ -34,6 +34,7 @@ int main(int argc, char *argv[], char *env[])
 				free_all(token);
 				exit(EXIT_SUCCESS);
 			}
+			
 			child_pid = fork();
 
 			if (child_pid == -1)
@@ -45,6 +46,15 @@ int main(int argc, char *argv[], char *env[])
 				if (token == NULL)
 				{
 					free(line);
+					exit(EXIT_SUCCESS);
+				}
+				else if (_strcmp("env",token[0]) == 0)
+				{
+					while (env[i])
+					{
+						_printf("%s\n", env[i]);
+						i++;
+					}
 					exit(EXIT_SUCCESS);
 				}
 				else if (execve(token[0], token, env) == -1)
