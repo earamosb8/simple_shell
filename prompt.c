@@ -18,44 +18,49 @@ int main(int argc, char *argv[], char *env[])
 	print_sign();
 	while ((read = getline(&line, &len, stdin)))
 	{
-		if (read < 0)
+		if (read == EOF)
 		{
 			perror("Unable to allocate buffer");
 			free(line);
 			return (EXIT_FAILURE);
 		}
-		token = tokenize(line);
 		counter ++;
-		if ((_strcmp("exit",token[0]) == 0))
-		{
-			free(line);
-			free_all(token);
-			exit(EXIT_SUCCESS);
-		}
-		child_pid = fork();
 
-		if (child_pid == -1)
+		if (*line != '\n')
 		{
-			exit(EXIT_FAILURE);
-		}
-		if (child_pid == 0)
-		{
-			if (token == NULL)
+			token = tokenize(line);
+			if ((_strcmp("exit",token[0]) == 0))
 			{
 				free(line);
+				free_all(token);
 				exit(EXIT_SUCCESS);
 			}
-			if (execve(token[0], token, env) == -1)
+			child_pid = fork();
+
+			if (child_pid == -1)
 			{
-				print_error(argv, counter, token[0]);
 				exit(EXIT_FAILURE);
 			}
+			if (child_pid == 0)
+			{
+				if (token == NULL)
+				{
+					free(line);
+					exit(EXIT_SUCCESS);
+				}
+				else if (execve(token[0], token, env) == -1)
+				{
+					print_error(argv, counter, token[0]);
+					exit(EXIT_FAILURE);
+				}
+			}
+			else
+			{
+				wait(&status);
+				send_free(line, token);
+			}
 		}
-		else
-		{
-			wait(&status);
-			send_free(line, token);
-		}
+		
 		len = 0, line = NULL;
 		print_sign();
 	}

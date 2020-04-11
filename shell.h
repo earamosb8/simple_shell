@@ -1,5 +1,6 @@
 #ifndef SHELL_H
 #define SHELL_H
+#define _GNU_SOURCE 
 
 #include <stdio.h>
 #include <stdlib.h>
@@ -10,6 +11,7 @@
 #include <sys/wait.h>
 #include <sys/stat.h>
 #include <stdarg.h>
+
 
 #define UNUSED(x) (void)(x)
 char buffer[1024];
