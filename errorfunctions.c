@@ -39,3 +39,33 @@ void send_free(char *line, char **token)
 	free(line);
 	free_all(token);
 }
+/**
+ * ejecutador - execute
+ * @token: array of commands
+ * @line: buffer created by getline
+ * @argv: array argv
+ * @env: array env
+ * @counter: counter
+ * Return: void
+ */
+void ejecutador(char **token, char *line, char **argv, char **env, int counter)
+{
+	int i = 0;
+
+	if (token == NULL)
+		free(line), exit(EXIT_SUCCESS);
+	else if (_strcmp("env", token[0]) == 0)
+	{
+		while (env[i])
+		{
+			_printf("%s\n", env[i]);
+			i++;
+		}
+		exit(EXIT_SUCCESS);
+	}
+	else if (execve(token[0], token, env) == -1)
+	{
+		print_error(argv, counter, token[0]);
+		exit(EXIT_FAILURE);
+	}
+}

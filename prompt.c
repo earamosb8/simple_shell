@@ -3,6 +3,7 @@
  * main - fork & wait example
  * @argc: void arg
  * @env: eviroment
+ * @argv: arguments
  * Return: Always 0.
  */
 int main(int argc, char *argv[], char *env[])
@@ -12,65 +13,33 @@ int main(int argc, char *argv[], char *env[])
 	ssize_t read;
 	pid_t child_pid;
 	int status;
-	int counter = 0, i = 0;
+	int counter = 0;
 
 	(void) argc;
 	print_sign();
 	while ((read = getline(&line, &len, stdin)))
 	{
 		if (read == EOF)
-		{
-			perror("Unable to allocate buffer");
-			free(line);
-			return (EXIT_FAILURE);
-		}
-		counter ++;
+			fun_per(line);
+		counter++;
 		if (*line != '\n')
 		{
 			token = tokenize(line);
-			if ((_strcmp("exit",token[0]) == 0))
-			{
-				free(line);
-				free_all(token);
-				exit(EXIT_SUCCESS);
-			}
-			
+			if ((_strcmp("exit", token[0]) == 0))
+				free(line), free_all(token), exit(EXIT_SUCCESS);
+
 			child_pid = fork();
 
 			if (child_pid == -1)
-			{
 				exit(EXIT_FAILURE);
-			}
 			if (child_pid == 0)
 			{
-				if (token == NULL)
-				{
-					free(line);
-					exit(EXIT_SUCCESS);
-				}
-				else if (_strcmp("env",token[0]) == 0)
-				{
-					while (env[i])
-					{
-						_printf("%s\n", env[i]);
-						i++;
-					}
-					exit(EXIT_SUCCESS);
-				}
-				else if (execve(token[0], token, env) == -1)
-				{
-					print_error(argv, counter, token[0]);
-					exit(EXIT_FAILURE);
-				}
+				ejecutador(token, line, argv, env, counter);
 			}
 			else
-			{
-				wait(&status);
-				send_free(line, token);
-			}
+				wait(&status), send_free(line, token);
 		}
-		len = 0, line = NULL;
-		print_sign();
+		len = 0, line = NULL, print_sign();
 	}
 	exit(EXIT_SUCCESS);
 }

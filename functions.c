@@ -48,3 +48,16 @@ char **tokenize(char *line)
 	command[i] = NULL;
 	return (command);
 }
+
+/**
+ * fun_per - free line
+ * @line: string to free
+ *
+ * Return: (EXIT_FAILURE).
+ */
+int fun_per (char * line)
+{
+	perror("Unable to allocate buffer");
+	free(line);
+	return (EXIT_FAILURE);
+}

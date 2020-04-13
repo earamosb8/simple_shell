@@ -1,6 +1,6 @@
 #ifndef SHELL_H
 #define SHELL_H
-#define _GNU_SOURCE 
+#define _GNU_SOURCE
 
 #include <stdio.h>
 #include <stdlib.h>
@@ -14,7 +14,6 @@
 
 
 #define UNUSED(x) (void)(x)
-char buffer[1024];
 int _putchar(char c);
 int _printf(const char *format, ...);
 int (*get_op_func(const char *s))(va_list);
@@ -45,5 +44,7 @@ char *_strncpy(char *dest, char *src, int n);
 void free_all(char **com);
 void print_error(char **argv, unsigned int count, char *token);
 void send_free(char *buffer, char **commands);
+int fun_per(char *line);
+void ejecutador(char **token, char *line, char **argv, char **env, int count);
 
 #endif
