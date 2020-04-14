@@ -54,11 +54,11 @@ char **tokenize(char *line)
  * fun_per - free line
  * @line: string to free
  *
- * Return: (EXIT_FAILURE).
+ * Return: (EXIT_SUCCESS).
  */
 int fun_per(char *line)
 {
-	perror("Unable to allocate buffer");
+	write(STDOUT_FILENO, "\n", 1);
 	free(line);
-	return (EXIT_FAILURE);
+	exit(EXIT_SUCCESS);
 }

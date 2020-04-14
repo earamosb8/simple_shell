@@ -67,15 +67,15 @@ void ejecutador(char **token, char *line, char **argv, char **env, int counter)
 	}
 	else if (stat(token[0], &buffer) == 0)
 	{
-		if(execve(token[0], token, env) == -1)
+		if (execve(token[0], token, env) == -1)
 		{
- 			print_error(argv, counter, token[0]);
- 			exit(EXIT_FAILURE);
+			print_error(argv, counter, token[0]);
+			exit(EXIT_FAILURE);
 		}
 	}
 	else
 	{
 		print_error(argv, counter, token[0]);
- 		exit(EXIT_FAILURE);
+		exit(EXIT_FAILURE);
 	}
 }
