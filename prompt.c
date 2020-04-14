@@ -1,5 +1,15 @@
 #include "shell.h"
 /**
+ * c_handler - handle the ctrl + c
+ * @next: non used argument
+ * Return: void
+ */
+void c_handler (int next)
+{
+	(void) next;
+	_printf("\n#cisfun$ ");
+}
+/**
  * main - fork & wait example
  * @argc: void arg
  * @env: eviroment
@@ -16,6 +26,9 @@ int main(int argc, char *argv[], char *env[])
 	int counter = 0;
 
 	(void) argc;
+
+	signal(SIGINT, c_handler);
+
 	print_sign();
 	while ((read = getline(&line, &len, stdin)))
 	{

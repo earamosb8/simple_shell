@@ -46,5 +46,6 @@ void print_error(char **argv, unsigned int count, char *token);
 void send_free(char *buffer, char **commands);
 int fun_per(char *line);
 void ejecutador(char **token, char *line, char **argv, char **env, int count);
+void c_handler (int next);
 
 #endif
