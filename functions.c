@@ -1,3 +1,4 @@
+
 #include "shell.h"
 /**
  * print_sign - Function to print the sign
@@ -55,7 +56,7 @@ char **tokenize(char *line)
  *
  * Return: (EXIT_FAILURE).
  */
-int fun_per (char * line)
+int fun_per(char *line)
 {
 	perror("Unable to allocate buffer");
 	free(line);

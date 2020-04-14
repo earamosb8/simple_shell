@@ -11,21 +11,21 @@ void print_error(char **argv, unsigned int counter, char *token)
 }
 /**
  * free_all - free all double pointers
- * @token: the pointer to free
+ * @tok: the pointer to free
  * Return: void
  */
-void free_all(char **token)
+void free_all(char **tok)
 {
 	unsigned int i = 0;
 
-	if (token != NULL)
+	if (tok != NULL)
 	{
-		while (token[i])
+		while (tok[i])
 		{
-			free(token[i]);
+			free(tok[i]);
 			i++;
 		}
-		free(token);
+		free(tok);
 	}
 }
 /**
@@ -50,6 +50,8 @@ void send_free(char *line, char **token)
  */
 void ejecutador(char **token, char *line, char **argv, char **env, int counter)
 {
+
+	struct stat buffer;
 	int i = 0;
 
 	if (token == NULL)
@@ -62,6 +64,10 @@ void ejecutador(char **token, char *line, char **argv, char **env, int counter)
 			i++;
 		}
 		exit(EXIT_SUCCESS);
+	}
+	else if (stat(token[0], &buffer) == -1)
+	{
+		_printf("%s: No such file or directory\n", argv[0]);
 	}
 	else if (execve(token[0], token, env) == -1)
 	{
