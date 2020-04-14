@@ -65,7 +65,7 @@ void ejecutador(char **token, char *line, char **argv, char **env, int counter)
 		}
 		exit(EXIT_SUCCESS);
 	}
-	else if (stat(token[0], &buffer) == -1)
+	else if (stat(token[0], &buffer) == -1 || token[1])
 	{
 		_printf("%s: No such file or directory\n", argv[0]);
 	}
