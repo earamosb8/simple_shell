@@ -65,8 +65,7 @@ void ejecutador(char **token, char *line, char **argv, char **env, int counter)
 		}
 		exit(EXIT_SUCCESS);
 	}
-	if (!token[1])
-	{
+
 		if (stat(token[0], &buffer) == 0)
 		{
 			if (execve(token[0], token, env) == -1)
@@ -81,10 +80,3 @@ void ejecutador(char **token, char *line, char **argv, char **env, int counter)
 			exit(EXIT_FAILURE);
 		}
 	}
-	else
-	{
-		print_error(argv, counter, token[0]);
-		exit(EXIT_FAILURE);
-	}
-
-}
