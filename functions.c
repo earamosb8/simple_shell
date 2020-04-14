@@ -54,11 +54,12 @@ char **tokenize(char *line)
  * fun_per - free line
  * @line: string to free
  *
- * Return: (EXIT_SUCCESS).
+ * Return: (EXIT_FAILURE).
  */
 int fun_per(char *line)
 {
-	write(STDOUT_FILENO, "\n", 1);
+	if (isatty(STDIN_FILENO))
+		write(STDOUT_FILENO, "\n", 1);
 	free(line);
-	exit(EXIT_SUCCESS);
+	exit (EXIT_SUCCESS);
 }
