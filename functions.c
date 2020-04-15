@@ -35,34 +35,44 @@ char **tokenize(char *line)
 	token = strtok(line, " \t\n\r");
 	if (token != NULL)
 	{
-	while (token != NULL)
-	{
-		command[i] = malloc(_strlen(token) + 1);
-		if (command[i] == NULL)
+		while (token != NULL)
 		{
-			free_all(command);
-			return (NULL);
+			command[i] = malloc(_strlen(token) + 1);
+			if (command[i] == NULL)
+			{
+				free_all(command);
+				return (NULL);
+			}
+			_strncpy(command[i], token, _strlen(token) + 1);
+			token = strtok(NULL, " \t\n\r");
+			i++;
 		}
-		_strncpy(command[i], token, _strlen(token) + 1);
-		token = strtok(NULL, " \t\n\r");
-		i++;
-	}
-	command[i] = NULL;
-	return (command);
+		command[i] = NULL;
+		return (command);
 	}
 	return (NULL);
 }
-
 /**
- * fun_per - free line
- * @line: string to free
- *
- * Return: (EXIT_FAILURE)
- */
-int fun_per(char *line)
+ * command_lot - the number of commands
+ * @str: string with the commands
+ * Return: number of commands
+*/
+unsigned int command_lot(char *str)
 {
-	if (isatty(STDIN_FILENO))
-		write(STDOUT_FILENO, "\n", 1);
-	free(line);
-	exit(EXIT_SUCCESS);
+	int i = 0;
+	int command = 0, temp = 0;
+
+	for (i = 0; str[i] != '\0'; i++)
+	{
+		if (str[i] != ' ')
+		{
+			temp = 1;
+		}
+		if ((temp == 1 && str[i + 1] == ' ') || (temp == 1 && str[i + 1] == '\0'))
+		{
+			command += 1;
+			temp = 0;
+		}
+	}
+	return (command);
 }

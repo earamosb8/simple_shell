@@ -65,28 +65,3 @@ char *_strncpy(char *dest, char *src, int n)
 	}
 	return (dest);
 }
-/**
- * command_lot - the number of commands
- * @str: string with the commands
- * Return: number of commands
-*/
-
-unsigned int command_lot(char *str)
-{
-	int i = 0;
-	int command = 0, temp = 0;
-
-	for (i = 0; str[i] != '\0'; i++)
-	{
-		if (str[i] != ' ')
-		{
-			temp = 1;
-		}
-		if ((temp == 1 && str[i + 1] == ' ') || (temp == 1 && str[i + 1] == '\0'))
-		{
-			command += 1;
-			temp = 0;
-		}
-	}
-	return (command);
-}

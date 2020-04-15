@@ -39,7 +39,7 @@ int main(int argc, char *argv[], char *env[])
 		{
 			token = tokenize(line);
 			if (token != NULL)
-			{		
+			{
 			child_pid = fork();
 			if (child_pid == -1)
 				exit(EXIT_FAILURE);
