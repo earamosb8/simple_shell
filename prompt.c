@@ -38,19 +38,19 @@ int main(int argc, char *argv[], char *env[])
 		if (*line != '\t' && *line != '\n')
 		{
 			token = tokenize(line);
-			if ((_strcmp("exit", token[0]) == 0))
-				free(line), free_all(token), exit(EXIT_SUCCESS);
-
 			child_pid = fork();
-
 			if (child_pid == -1)
 				exit(EXIT_FAILURE);
 			if (child_pid == 0)
-			{
 				ejecutador(token, line, argv, env, counter);
-			}
 			else
-				wait(&status), send_free(line, token);
+			{
+				wait(&status);
+				if ((_strcmp(token[0], "exit") == 0))
+					send_free(line, token), exit(EXIT_SUCCESS);
+				else
+					send_free(line, token);
+			}
 		}
 		len = 0, line = NULL, print_sign();
 	}
