@@ -15,7 +15,7 @@ void ejecutador(char **token, char *line, char **argv, char **env, int counter)
 
 	/** Token NULL */
 	if (token == NULL)
-		free(line), exit(EXIT_SUCCESS);
+		free(line), exit(EXIT_FAILURE);
 	/** if command is "exit" */
 	else if ((_strcmp(token[0], "exit") == 0))
 		free(line), free_all(token), exit(EXIT_SUCCESS);
@@ -34,12 +34,28 @@ void ejecutador(char **token, char *line, char **argv, char **env, int counter)
 	/** if the command have the full path */
 	else if (stat(token[0], &buffer) == 0)
 		execve(token[0], token, env);
+	/** if dont find full path, looking for that or print error*/
 	else
 	{
-		search_path();
-		print_error(argv, counter, token[0]);
-		free(line);
-		free_all(token);
-		exit(EXIT_FAILURE);
+		print_error(argv, counter, token, line);
+	/**	search_path(token, line, argv, env, counter);*/
 	}
 }
+/**
+ * search_path - look for the complete path
+ * @token: commands tokenized
+ * @line: complete string from stdinput
+ * @argv: arguments of program
+ * @env: enviroment variables
+ * @
+ *
+ *void search_path(char **token, char *line, char **argv, char **env, int c)
+ *{
+ *	struct stat fileStat;
+ *
+ *	print_error(argv, counter, token[0]);
+ *	free(line);
+ *	free_all(token);
+ *	exit(EXIT_FAILURE);
+ *}
+ */

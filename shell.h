@@ -11,9 +11,8 @@
 #include <sys/wait.h>
 #include <sys/stat.h>
 #include <stdarg.h>
+#include <errno.h>
 
-
-#define UNUSED(x) (void)(x)
 int _putchar(char c);
 int _printf(const char *format, ...);
 int (*get_op_func(const char *s))(va_list);
@@ -42,7 +41,7 @@ char **tokenize(char *line);
 unsigned int command_lot(char *str);
 char *_strncpy(char *dest, char *src, int n);
 void free_all(char **com);
-void print_error(char **argv, unsigned int count, char *token);
+void print_error(char **argv, unsigned int count, char **token, char *line);
 void send_free(char *buffer, char **commands);
 int fun_per(char *line);
 void ejecutador(char **token, char *line, char **argv, char **env, int count);

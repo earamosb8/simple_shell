@@ -17,7 +17,13 @@ int fun_per(char *line)
  * @counter: how many functions maked
  * @token: array of strings
  */
-void print_error(char **argv, unsigned int counter, char *token)
+void print_error(char **argv, unsigned int counter, char **token, char *line)
 {
-	_printf("%s: %i: %s: not found\n", argv[0], counter, token);
+	char mensaje[128];
+
+	sprintf(mensaje, "%s: %d: %s: not found\n", argv[0], counter, token[0]);
+	write(STDERR_FILENO, mensaje, _strlen(mensaje));
+	free(line);
+	free_all(token);
+	exit(127);
 }
