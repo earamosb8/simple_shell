@@ -35,7 +35,7 @@ int main(int argc, char *argv[], char *env[])
 		if (read == EOF)
 			fun_per(line);
 		counter++;
-		if (*line != '\n')
+		if (*line != '\t' && *line != '\n')
 		{
 			token = tokenize(line);
 			if ((_strcmp("exit", token[0]) == 0))
