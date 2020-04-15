@@ -35,7 +35,7 @@ int main(int argc, char *argv[], char *env[])
 		if (read == EOF)
 			fun_per(line);
 		counter++;
-		if (*line != '\t' && *line != '\n')
+		if (*line != '\t' && *line != '\n' && *line != ' ')
 		{
 			token = tokenize(line);
 			child_pid = fork();
