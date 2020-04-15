@@ -32,8 +32,9 @@ char **tokenize(char *line)
 	command = malloc((sizeof(char *) * (len + 1)));
 	if (command == NULL)
 		return (NULL);
-
 	token = strtok(line, " \t\n\r");
+	if (token != NULL)
+	{
 	while (token != NULL)
 	{
 		command[i] = malloc(_strlen(token) + 1);
@@ -48,6 +49,8 @@ char **tokenize(char *line)
 	}
 	command[i] = NULL;
 	return (command);
+	}
+	return (NULL);
 }
 
 /**

@@ -35,9 +35,11 @@ int main(int argc, char *argv[], char *env[])
 		if (read == EOF)
 			fun_per(line);
 		counter++;
-		if (*line != '\t' && *line != '\n' && *line != ' ')
+		if (*line  != '\n')
 		{
 			token = tokenize(line);
+			if (token != NULL)
+			{		
 			child_pid = fork();
 			if (child_pid == -1)
 				exit(EXIT_FAILURE);
@@ -50,6 +52,7 @@ int main(int argc, char *argv[], char *env[])
 					send_free(line, token), exit(EXIT_SUCCESS);
 				else
 					send_free(line, token);
+			}
 			}
 		}
 		len = 0, line = NULL, print_sign();
