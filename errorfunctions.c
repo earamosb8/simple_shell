@@ -78,6 +78,8 @@ void ejecutador(char **token, char *line, char **argv, char **env, int counter)
 	else
 	{
 		print_error(argv, counter, token[0]);
+		free(line);
+		free_all(token);
 		exit(EXIT_FAILURE);
 	}
 }
