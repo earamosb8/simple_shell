@@ -1,0 +1,125 @@
+.TH HSH 1 "16/04/2018"  "Holberton Commands Manual"
+.SH NAME
+.B hsh 
+- Holberton School Simple Shell
+.SH SYNOPSIS
+.B ./hsh 
+[command] [options]
+.SH DESCRIPTION
+.B hsh 
+.B Overview
+SIMPLE_SHELL is a project created by holberton students for learn how it works the shell 
+.B bash or 
+.B dash. 
+.I FORMAT [ARGUMENT]...
+.SH OPTIONS
+.B Simple Shell
+operates in both 
+.I interactive 
+and 
+.I non-interactive
+ mode. The user may initiate 
+.B simple shell
+and begin working or initate 
+.B simple shell
+using commands meant to be run by the program.
+.SH ARGUMENTS
+The first argument, argument 0 (ARGV[0)] is understood to be the command to be run by 
+.B simple shell
+and arguments following as modifiers or options.
+.SH INVOCATION
+.B simple shell
+may be invoked with the same functionality in 
+.I interactive 
+or 
+.I non-interactive 
+mode.  The user may quit the program by typing "exit", "Ctrl + D" on the command line.
+When the program quits or a command has been executed, 
+.B simple shell 
+returns with a new prompt: "cisfun$ "
+
+.B Example
+.IP
+
+$./hsh
+
+$pwd
+
+/home/vagrant/simple_shell
+
+$
+
+$/bin/pwd
+
+/home/vagrant/simple_shell
+
+$
+
+.SH RESERVED WORDS
+.B exit: 
+quits the program, exits the shell.
+
+.B env: 
+prints the environment variables
+
+.SH HISTORY
+The 
+.B history 
+built-in displays the history list, one command per line, preceded with line numbers, starting with 0. On exit the entire history is written to a file named
+.I simple_shell_history
+in the 
+.I $HOME
+directory.
+.SH SHELL BUILTIN COMMANDS
+The commands 
+.B exit
+and 
+.B env
+are handled automatically by 
+.B simple shell
+
+.SH SEE ALSO
+.I sh(1)
+,
+.I bash(1)
+,
+.I _printf(3)
+.SH FILES
+.I prompt.c 
+- Contains the int main(void) function, entry point.
+.B c_handler, main
+
+.I err_func.c
+- Contains functions that creates messages appropriate to specific errors:
+.B read_error, print_error
+
+.I execute.c 
+- Contains function to execute the commands: 
+.B ejecutador, search_path
+
+.I free_func.c 
+- Contains functions to free memory:
+.B free_all , send_free
+
+.I functions.c
+- Contains functions to correct use of program
+.B print_sign, tokenize, command_lot, _realloc , _mencpy
+
+.I _printf.c 
+- Contains our function printf: 
+.B get_op_func, _printf 
+
+.I _printf_m.c 
+- Contains function to print messages:
+.B _printp, f_int, f_int_unsigned, _printc , _prints
+
+.I str_func.c
+- Contains function to print messages:
+.B _putchar, _strcmp, _strlen, _strncpy, _strcat
+
+.SH BUGS
+Report 
+.B simple shell 
+bugs to https://github.com/somarae8
+.SH AUTHOR
+Luis Angel Vargas Mosquera, Eduardo A. Ramos
