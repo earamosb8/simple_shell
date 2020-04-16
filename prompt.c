@@ -33,7 +33,7 @@ int main(int argc, char *argv[], char *env[])
 	while ((read = getline(&line, &len, stdin)))
 	{
 		if (read == EOF)
-			fun_per(line);
+			read_error(line);
 		counter++;
 		if (*line != '\t' || *line  != '\n')
 		{
