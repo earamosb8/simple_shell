@@ -8,15 +8,19 @@ void free_all(char **tok)
 {
 	unsigned int i = 0;
 
-	if (tok != NULL)
+	if (tok == NULL)
+		return;
+	if (tok)
 	{
 		while (tok[i])
 		{
 			free(tok[i]);
 			i++;
 		}
-		free(tok);
+		if (tok[i] == NULL)
+			free(tok[i]);
 	}
+	free(tok);
 }
 /**
  * send_free - Function to send free when the child is not created

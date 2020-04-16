@@ -20,7 +20,7 @@ int read_error(char *line)
  */
 void print_error(char **argv, unsigned int counter, char **token, char *line)
 {
-	char mensaje[30];
+	char mensaje[150];
 
 	sprintf(mensaje, "%s: %d: %s: not found\n", argv[0], counter, token[0]);
 	write(STDERR_FILENO, mensaje, _strlen(mensaje));

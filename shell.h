@@ -37,8 +37,9 @@ typedef struct format
 void print_sign(void);
 int _strcmp(char *s1, char *s2);
 int _strlen(char *s);
-char **tokenize(char *line);
-unsigned int command_lot(char *str);
+char *_strcat(char *dest, char *src);
+char **tokenize(char *line, const char *delim, const char delim_lot);
+unsigned int command_lot(char *str, const char delim);
 char *_strncpy(char *dest, char *src, int n);
 void free_all(char **com);
 void print_error(char **argv, unsigned int count, char **token, char *line);
@@ -46,5 +47,8 @@ void send_free(char *buffer, char **commands);
 int read_error(char *line);
 void ejecutador(char **token, char *line, char **argv, char **env, int count);
 void c_handler (int next);
+void search_path(char **token, char *line, char **argv, char **env, int c);
+char *_memcpy(char *dest, char *src, unsigned int n);
+void *_realloc(void *ptr, unsigned int old_size, unsigned int new_size);
 
 #endif
