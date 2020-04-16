@@ -19,8 +19,8 @@ int (*get_op_func(const char *s))(va_list);
 int _printc(va_list c);
 int _printp(__attribute__((unused))va_list c);
 int _prints(va_list s);
-int _printd(va_list d);
-int _printi(va_list i);
+int f_int(va_list list);
+int f_int(va_list list);
 int f_int_unsigned(va_list ui);
 /**
  * struct format - Struct to define type of data and its function.

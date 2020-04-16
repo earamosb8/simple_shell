@@ -43,21 +43,3 @@ void ejecutador(char **token, char *line, char **argv, char **env, int counter)
 	/**	search_path(token, line, argv, env, counter);*/
 	}
 }
-/**
- * search_path - look for the complete path
- * @token: commands tokenized
- * @line: complete string from stdinput
- * @argv: arguments of program
- * @env: enviroment variables
- * @
- *
- *void search_path(char **token, char *line, char **argv, char **env, int c)
- *{
- *	struct stat fileStat;
- *
- *	print_error(argv, counter, token[0]);
- *	free(line);
- *	free_all(token);
- *	exit(EXIT_FAILURE);
- *}
- */

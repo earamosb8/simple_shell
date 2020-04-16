@@ -12,8 +12,8 @@ int (*get_op_func(const char *s))(va_list)
 	listype tipo[] = {
 		{"s", _prints},
 		{"c", _printc},
-		{"i", _printi},
-		{"d", _printd},
+		{"i", f_int},
+		{"d", f_int},
 		{"%", _printp},
 		{"ui", f_int_unsigned},
 		{NULL, NULL}
