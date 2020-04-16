@@ -51,6 +51,8 @@ This shell use the next functions in the next directories:
 
 `ejecutador`        --> Run the command entered by the user.
 
+`search_path`	    --> Function to search path of environment.
+
 
 #### ========== free_func.c ==========
 
@@ -66,6 +68,10 @@ This shell use the next functions in the next directories:
 `tokenize`          --> Save on an array each command entered by the user, before run the command.
 
 `command_lot`       --> Count the number of commands entered by the user.
+
+`_realloc`	    --> Reallocate the memory
+
+`_memcopy`	    --> Copy str the number of bytes from src to desk.
 
 
 #### ========== _printf.c ==========
@@ -88,8 +94,6 @@ This shell use the next functions in the next directories:
 
 `f_int`             --> Print integers on _printf function.
 
-`f_dec`             --> Print decimals on _printf function.
-
 `f_int_unsigned`    --> Print unsigned integers on _printf function.
 
 
@@ -110,6 +114,7 @@ This shell use the next functions in the next directories:
 
 `_strncpy`          --> Copy a string from a _source_ to a _dest_ a _n_ bytes size.
 
+`_strcat`	    --> Concat two strings
 
 ## Authors ✍
 
