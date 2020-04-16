@@ -43,7 +43,7 @@ char *_strncpy(char *dest, char *src, int n);
 void free_all(char **com);
 void print_error(char **argv, unsigned int count, char **token, char *line);
 void send_free(char *buffer, char **commands);
-int fun_per(char *line);
+int read_error(char *line);
 void ejecutador(char **token, char *line, char **argv, char **env, int count);
 void c_handler (int next);
 

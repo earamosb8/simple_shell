@@ -24,7 +24,7 @@ We have 2 modes of using the program, in interactive mode and non-interactive mo
 
 #### non-interactive
 
-   In this mode, we pass the command from the standard output but don't print the prompt.
+    In this mode, we pass the command from the standard output but don't print the prompt.
 
 `$ echo "/bin/ls" | ./hsh`
 
