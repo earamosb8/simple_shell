@@ -76,5 +76,6 @@ void search_path(char **token, char *line, char **argv, char **env, int c)
 	}
 	print_error(argv, c, token, line);
 	free_all(path_com);
+	free(full_path);
 	exit(EXIT_FAILURE);
 }
