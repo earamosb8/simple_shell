@@ -44,9 +44,9 @@ void free_all(char **com);
 void print_error(char **argv, unsigned int count, char **token, char *line);
 void send_free(char *buffer, char **commands);
 int read_error(char *line);
-void ejecutador(char **token, char *line, char **argv, char **env, int count);
+void ejecutador(char **token, char *line, char **argv, char **env, int count ,char **command);
 void c_handler (int next);
-void search_path(char **token, char *line, char **argv, char **env, int c);
+void search_path(char **token, char *line, char **argv, char **env, int c, char **command);
 char *_memcpy(char *dest, char *src, unsigned int n);
 void *_realloc(void *ptr, unsigned int old_size, unsigned int new_size);
 

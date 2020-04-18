@@ -8,7 +8,7 @@
  * @counter: counter
  * Return: void
  */
-void ejecutador(char **token, char *line, char **argv, char **env, int counter)
+void ejecutador(char **token, char *line, char **argv, char **env, int counter, char **command)
 {
 	struct stat buffer;
 	int i = 0;
@@ -36,7 +36,7 @@ void ejecutador(char **token, char *line, char **argv, char **env, int counter)
 		execve(token[0], token, env);
 	/** if dont find full path, looking for that or print error*/
 	else
-		search_path(token, line, argv, env, counter);
+		search_path(token, line, argv, env, counter, command);
 }
 /**
  * search_path - look for the complete path
@@ -47,12 +47,11 @@ void ejecutador(char **token, char *line, char **argv, char **env, int counter)
  * @line: string enetered by stdinput
  * @c: counter
  */
-void search_path(char **token, char *line, char **argv, char **env, int c)
+void search_path(char **token, char *line, char **argv, char **env, int c , char **command)
 {
 	struct stat fileStat;
 	int i = 0, len_com = 0, len_p = 0;
 	char *full_path;
-	char **path_com;
 	const char *delim_path = ":";
 	const char delim_lot = ':';
 
@@ -61,21 +60,24 @@ void search_path(char **token, char *line, char **argv, char **env, int c)
 
 	_strcat(full_path, "0");
 
-	path_com = tokenize(full_path, delim_path, delim_lot);
-	while (path_com[i])
-	{
-		len_p = _strlen(path_com[i]);
-		path_com[i] = _realloc(path_com[i], sizeof(char *) * len_p,
-			sizeof(char *) * (len_p + len_com + 2));
-		_strcat(path_com[i], "/");
-		_strcat(path_com[i], token[0]);
+	command = tokenize(full_path, delim_path, delim_lot);
 
-		if (stat(path_com[i], &fileStat) == 0)
-			execve(path_com[i], token, env);
+	while (command[i])
+	{
+		len_p = _strlen(command[i]);
+		command[i] = _realloc(command[i], sizeof(char) * len_p,
+			sizeof(char) * (len_p + len_com + 2));
+		_strcat(command[i], "/");
+		_strcat(command[i], token[0]);
+
+		if (stat(command[i], &fileStat) == 0)
+			execve(command[i], token, env);
+
+		free(command[i]);
 		i++;
 	}
 	print_error(argv, c, token, line);
-	free_all(path_com);
+	free_all(command);
 	free(full_path);
 	exit(EXIT_FAILURE);
 }

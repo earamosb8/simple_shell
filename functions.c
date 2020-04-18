@@ -30,7 +30,6 @@ char **tokenize(char *line, const char *delim, const char delim_lot)
 	len = command_lot(line, delim_lot);
 	if (len == 0)
 		return (NULL);
-
 	command = malloc((sizeof(char *) * (len + 1)));
 	if (command == NULL)
 		return (NULL);
@@ -91,6 +90,7 @@ void *_realloc(void *ptr, unsigned int old_size, unsigned int new_size)
 {
 	void  *newptr;
 
+	printf("%ui es old y %ui es nuevo\n", old_size, new_size);
 	if (ptr == NULL)
 	{
 		newptr = (malloc(new_size));

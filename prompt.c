@@ -25,6 +25,7 @@ int main(int argc, char *argv[], char *env[])
 	ssize_t read;
 	pid_t child_pid;
 	int status, counter = 0;
+	char **command = NULL;
 
 	(void) argc;
 	signal(SIGINT, c_handler);
@@ -43,14 +44,17 @@ int main(int argc, char *argv[], char *env[])
 				if (child_pid == -1)
 					exit(EXIT_FAILURE);
 				if (child_pid == 0)
-					ejecutador(token, line, argv, env, counter);
+					ejecutador(token, line, argv, env, counter, command);
 				else
 				{
 					wait(&status);
 					if ((_strcmp(token[0], "exit") == 0))
 						send_free(line, token), exit(EXIT_SUCCESS);
 					else
+					{
 						send_free(line, token);
+						free_all(command);
+					}
 				}
 			}
 		}
