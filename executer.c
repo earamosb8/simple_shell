@@ -54,6 +54,7 @@ void search_path(char **token, char *line, char **argv, char **env, int c , char
 	char *full_path;
 	const char *delim_path = ":";
 	const char delim_lot = ':';
+	char *nuevo = NULL;
 
 	len_com = _strlen(token[0]);
 	full_path = getenv("PATH");
@@ -65,19 +66,21 @@ void search_path(char **token, char *line, char **argv, char **env, int c , char
 	while (command[i])
 	{
 		len_p = _strlen(command[i]);
-		command[i] = _realloc(command[i], sizeof(char) * len_p,
-			sizeof(char) * (len_p + len_com + 2));
-		_strcat(command[i], "/");
-		_strcat(command[i], token[0]);
+		nuevo = malloc(len_p + len_com + 2);
+		strcpy(nuevo, command[i]);
+		_strcat(nuevo, "/");
+		_strcat(nuevo, token[0]);
 
-		if (stat(command[i], &fileStat) == 0)
-			execve(command[i], token, env);
+		if (stat(nuevo, &fileStat) == 0)
+			execve(nuevo, token, env);
 
-		free(command[i]);
+		free(nuevo);
 		i++;
 	}
-	print_error(argv, c, token, line);
+
 	free_all(command);
-	free(full_path);
+	print_error(argv, c, token, line);
+
 	exit(EXIT_FAILURE);
+
 }

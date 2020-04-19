@@ -11,11 +11,7 @@ int (*get_op_func(const char *s))(va_list)
 	unsigned int i = 0;
 	listype tipo[] = {
 		{"s", _prints},
-		{"c", _printc},
-		{"i", f_int},
-		{"d", f_int},
 		{"%", _printp},
-		{"ui", f_int_unsigned},
 		{NULL, NULL}
 	};
 	for (i = 0; tipo[i].type != NULL; i++)

@@ -47,7 +47,4 @@ int read_error(char *line);
 void ejecutador(char **token, char *line, char **argv, char **env, int count ,char **command);
 void c_handler (int next);
 void search_path(char **token, char *line, char **argv, char **env, int c, char **command);
-char *_memcpy(char *dest, char *src, unsigned int n);
-void *_realloc(void *ptr, unsigned int old_size, unsigned int new_size);
-
 #endif
