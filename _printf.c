@@ -1,5 +1,25 @@
 #include "shell.h"
 /**
+ * _prints - Print string
+ * @s: string
+ * Return: count + lenght
+ */
+int _prints(va_list s)
+{
+	int i, count = 0;
+	char *ptr = va_arg(s, char *);
+
+	if (ptr == NULL)
+	{
+		return (write(1, "(null)", 6));
+	}
+	for (i = 0; ptr[i]; i++, count++)
+	{
+		_putchar(ptr[i]);
+	}
+	return (count);
+}
+/**
  * get_op_func - get function print of format select.
  * @s: format
  * Description: select format
@@ -11,7 +31,6 @@ int (*get_op_func(const char *s))(va_list)
 	unsigned int i = 0;
 	listype tipo[] = {
 		{"s", _prints},
-		{"%", _printp},
 		{NULL, NULL}
 	};
 	for (i = 0; tipo[i].type != NULL; i++)

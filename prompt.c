@@ -51,10 +51,7 @@ int main(int argc, char *argv[], char *env[])
 					if ((_strcmp(token[0], "exit") == 0))
 						send_free(line, token), exit(EXIT_SUCCESS);
 					else
-					{
-						send_free(line, token);
-						free_all(command);
-					}
+						send_free(line, token), free_all(command);
 				}
 			}
 		}

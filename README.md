@@ -69,32 +69,14 @@ This shell use the next functions in the next directories:
 
 `command_lot`       --> Count the number of commands entered by the user.
 
-`_realloc`	    --> Reallocate the memory
-
-`_memcopy`	    --> Copy str the number of bytes from src to desk.
-
 
 #### ========== _printf.c ==========
+
+`_prints`           --> Print string on _printf function.
 
 `get_op_func`       --> Function to look for arguments from the _printf fuction.
 
 `_printf`           --> Print a simple line of text and can receive format and arguments.
-
-
-#### ========== _printf_c.c ==========
-
-`_printc`           --> Print char on _printf function.
-
-`_prints`           --> Print string on _printf function.
-
-
-#### ========== _printf_n.c ==========
-
-`_printp`           --> Print the percent on _printf function.
-
-`f_int`             --> Print integers on _printf function.
-
-`f_int_unsigned`    --> Print unsigned integers on _printf function.
 
 
 #### ========== prompt.c ==========
@@ -102,6 +84,11 @@ This shell use the next functions in the next directories:
 `c_handler`         --> Handle the CTRL + C signal.
 
 `main`              --> The main function of the program.
+
+
+#### ========== str_func.c ==========
+
+`_strcpy`          --> Copy a string from a _source_ to a _dest_.
 
 
 #### ========== str_func.c ==========

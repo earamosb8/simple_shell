@@ -16,11 +16,8 @@
 int _putchar(char c);
 int _printf(const char *format, ...);
 int (*get_op_func(const char *s))(va_list);
-int _printc(va_list c);
-int _printp(__attribute__((unused))va_list c);
 int _prints(va_list s);
-int f_int(va_list list);
-int f_int_unsigned(va_list ui);
+
 /**
  * struct format - Struct to define type of data and its function.
  * @type: formats
@@ -36,6 +33,7 @@ typedef struct format
 void print_sign(void);
 int _strcmp(char *s1, char *s2);
 int _strlen(char *s);
+char *_strcpy(char *dest, char *src);
 char *_strcat(char *dest, char *src);
 char **tokenize(char *line, const char *delim, const char delim_lot);
 unsigned int command_lot(char *str, const char delim);
@@ -47,4 +45,5 @@ int read_error(char *line);
 void ejecutador(char **token, char *line, char **argv, char **env, int count ,char **command);
 void c_handler (int next);
 void search_path(char **token, char *line, char **argv, char **env, int c, char **command);
+
 #endif

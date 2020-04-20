@@ -6,9 +6,11 @@
  * @argv: array argv
  * @env: array env
  * @counter: counter
+ * @command: command with the full path
  * Return: void
  */
-void ejecutador(char **token, char *line, char **argv, char **env, int counter, char **command)
+void ejecutador(char **token, char *line, char **argv,
+		 char **env, int counter, char **command)
 {
 	struct stat buffer;
 	int i = 0;
@@ -46,8 +48,10 @@ void ejecutador(char **token, char *line, char **argv, char **env, int counter, 
  * @env: enviroment variables
  * @line: string enetered by stdinput
  * @c: counter
+ * @command: command with the full path
  */
-void search_path(char **token, char *line, char **argv, char **env, int c , char **command)
+void search_path(char **token, char *line, char **argv,
+		char **env, int c, char **command)
 {
 	struct stat fileStat;
 	int i = 0, len_com = 0, len_p = 0;
@@ -67,7 +71,7 @@ void search_path(char **token, char *line, char **argv, char **env, int c , char
 	{
 		len_p = _strlen(command[i]);
 		nuevo = malloc(len_p + len_com + 2);
-		strcpy(nuevo, command[i]);
+		_strcpy(nuevo, command[i]);
 		_strcat(nuevo, "/");
 		_strcat(nuevo, token[0]);
 

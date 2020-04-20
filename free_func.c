@@ -30,6 +30,9 @@ void free_all(char **tok)
  */
 void send_free(char *line, char **token)
 {
-	free(line);
+	if (line == NULL)
+		;
+	else
+		free(line);
 	free_all(token);
 }
