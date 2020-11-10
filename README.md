@@ -10,7 +10,7 @@ It consists of a simple shell designed on C language, to be used with simple mod
 
 For use and see this simple_shell, just clone from this repository:
 
-`https://github.com/somarae8/simple_shell.git`
+`https://github.com/earamosb8/simple_shell.git`
 
 ## Compilation process
 
@@ -106,4 +106,4 @@ This shell use the next functions in the next directories:
 ## Authors ✍
 
 * **Luis Angel Vargas Mosquera** - *GitHub user* - [LuAnVaRmO](https://github.com/LuAnVaRmO)
-* **Eduardo Ramos Barbosa** - *GitHub user* - [somarae8](https://github.com/somarae8)
+* **Eduardo Ramos Barbosa** - *GitHub user* - [earamosb8](https://github.com/earamosb8)
